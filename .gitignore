@@ -114,3 +114,6 @@ fabric.properties
 
 # Project exclude paths
 /storage/
+
+.phpstorm.meta.php
+_ide_helper.php
