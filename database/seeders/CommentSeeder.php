@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Answer;
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
 
 class CommentSeeder extends Seeder
@@ -13,6 +15,9 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Comment::factory()
+            ->hasRatings(3)
+            ->count(50)
+            ->create();
     }
 }
