@@ -27,7 +27,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->sentence,
             'description' => $this->faker->text,
             'content' => $this->faker->realText(),
-            'rating' => $this->faker->randomNumber(2),
+            'rating' => choose(0, $this->faker->randomDigit),
         ];
     }
 }

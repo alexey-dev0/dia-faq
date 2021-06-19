@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Question;
 
@@ -22,10 +23,10 @@ class QuestionFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => \App\Models\User::factory(),
-            'title' => $this->faker->word,
+            'user_id' => User::factory(),
+            'title' => $this->faker->words(asText: true),
             'content' => $this->faker->text,
-            'rating' => $this->faker->randomNumber(),
+            'rating' => choose(0, $this->faker->randomDigit),
         ];
     }
 }

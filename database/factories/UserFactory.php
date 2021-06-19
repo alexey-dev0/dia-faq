@@ -31,8 +31,8 @@ class UserFactory extends Factory
             'nickname' => $nickname,
             'name' => $this->faker->optional(0.4)->firstName,
             'surname' => $this->faker->optional(0.3)->lastName,
-            'email' => $this->faker->freeEmail,
-            'rating' => $this->faker->randomNumber(2),
+            'email' => $this->faker->unique()->freeEmail,
+            'rating' => choose(0, $this->faker->randomDigit),
             'email_verified_at' => $this->faker->optional(0.1)->dateTime(),
             'password' => bcrypt($this->faker->password),
         ];

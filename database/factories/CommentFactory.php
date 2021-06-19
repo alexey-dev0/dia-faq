@@ -40,7 +40,7 @@ class CommentFactory extends Factory
             'commentable_id' => $commentable_id,
             'commentable_type' => $commentable_type,
             'text' => $this->faker->text,
-            'rating' => $this->faker->randomNumber(2),
+            'rating' => choose(0, $this->faker->randomDigit),
         ];
     }
 }

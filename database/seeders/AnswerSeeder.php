@@ -12,7 +12,7 @@ class AnswerSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         Answer::factory()
             ->count(50)

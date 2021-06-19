@@ -27,7 +27,7 @@ class AnswerFactory extends Factory
             'user_id' => User::factory(),
             'question_id' => Question::factory(),
             'content' => $this->faker->text,
-            'rating' => $this->faker->randomNumber(2),
+            'rating' => choose(0, $this->faker->randomDigit),
         ];
     }
 }
