@@ -8,16 +8,18 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
         <!-- Styles -->
+        <script src="https://kit.fontawesome.com/8facb7467b.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        @livewireStyles
+        @stack('styles')
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="bg-gray-100 text-gray-500 font-sans font-thin flex flex-col min-h-screen md:flex-row md:flex-row">
+        @include('sweetalert::alert')
+
+        <div class="relative w-full">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -32,5 +34,21 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <!-- Scripts -->
+        @livewireScripts
+        <script src="//unpkg.com/alpinejs" defer></script>
+        <script src="{{ mix('js/app.js') }}"></script>
+        @livewire('livewire-ui-modal')
+        @livewireUIScripts
+        @stack('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                if ( location.hash.substring(1) === 'auth' ) {
+                    Livewire.emit('openModal', 'auth.modal');
+                    history.pushState("", document.title, location.pathname + location.search);
+                }
+            });
+        </script>
     </body>
 </html>
