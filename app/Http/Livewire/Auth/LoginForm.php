@@ -10,8 +10,8 @@ use Livewire\Component;
 
 class LoginForm extends Component
 {
-    public string $email;
-    public string $password;
+    public string $email = '';
+    public string $password = '';
     public bool $remember = false;
 
     protected array $rules = [

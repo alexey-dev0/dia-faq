@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
-use Password;
 
 class RegisterForm extends Component
 {
-    public string $name;
-    public string $email;
-    public string $password;
-    public string $password_confirmation;
+    public string $name = '';
+    public string $email = '';
+    public string $password = '';
+    public string $password_confirmation = '';
 
     protected array $rules = [
         'name' => 'sometimes|string|min:2|max:255',

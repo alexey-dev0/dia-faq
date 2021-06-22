@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -10,11 +11,11 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('index');
     }
 
     /**

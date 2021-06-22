@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::resource('question', QuestionController::class)->only(['index']);
+Route::resource('question', QuestionController::class)->only(['index'])->middleware('auth');
+Route::resource('article', ArticleController::class)->only(['index'])->middleware('auth');
 
 require __DIR__.'/auth.php';
