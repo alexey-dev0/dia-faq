@@ -24,9 +24,9 @@ class QuestionFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'title' => $this->faker->words(asText: true),
+            'title' => $this->faker->words(asText: true) . '?',
             'content' => $this->faker->text,
-            'rating' => choose(0, $this->faker->randomDigit),
+            'rating' => choose(0, $this->faker->randomDigit) * choose(-1, 1),
         ];
     }
 }

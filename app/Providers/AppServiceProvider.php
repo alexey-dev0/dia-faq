@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Blade;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::directive('log', fn($expression) => "<?php info($expression) ?>");
+
+        Builder::macro('search', function($field, $string) {
+            return $string ? $this->where($field, 'like', '%'.$string.'%') : $this;
+        });
     }
 }

@@ -15,6 +15,7 @@ class QuestionSeeder extends Seeder
     public function run(): void
     {
         Question::factory()
+            ->hasTags(3)
             ->count(50)
             ->create();
     }
