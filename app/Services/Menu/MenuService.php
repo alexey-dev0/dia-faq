@@ -15,7 +15,6 @@ class MenuService
             self::item('Главная')->route('index')->icon('home'),
             self::item('Вопросы')->resource('question')->icon('question'),
             self::item('Статьи')->resource('article')->icon('file-alt'),
-            self::item('Test')->route('login'),
         ];
 
 

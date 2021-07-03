@@ -5,10 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#b91d47">
+        <meta name="theme-color" content="#ffffff">
+
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 
         <!-- Styles -->
         <script src="https://kit.fontawesome.com/8facb7467b.js" crossorigin="anonymous"></script>
@@ -19,13 +31,15 @@
     <body class="bg-gray-100 text-gray-500 font-sans font-thin flex flex-col min-h-screen md:flex-row md:flex-row">
         @include('sweetalert::alert')
 
-        <div class="relative w-full">
+        <div class="flex flex-col relative w-full">
             @include('layouts.navigation')
 
             <!-- Page Content -->
-            <main>
+            <main class="flex-1">
                 @yield('content')
             </main>
+
+            @include('layouts.footer')
         </div>
 
         <!-- Scripts -->

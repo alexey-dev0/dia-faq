@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::resource('question', QuestionController::class)->only(['index'])->middleware('auth');
+Route::resource('question', QuestionController::class)->only(['index', 'show'])->middleware('auth');
 Route::resource('article', ArticleController::class)->only(['index'])->middleware('auth');
+
+Route::view('/author', 'pages.author')->name('author');
 
 require __DIR__.'/auth.php';

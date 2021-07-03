@@ -45,18 +45,18 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Question  $question
-     * @return Response
+     * @param Question $question
+     * @return View
      */
-    public function show(Question $question)
+    public function show(Question $question): View
     {
-        //
+        return view('pages.questions.read', compact('question'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Question  $question
+     * @param Question $question
      * @return Response
      */
     public function edit(Question $question)
@@ -68,7 +68,7 @@ class QuestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Question  $question
+     * @param Question $question
      * @return Response
      */
     public function update(Request $request, Question $question)
@@ -79,7 +79,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Question  $question
+     * @param Question $question
      * @return Response
      */
     public function destroy(Question $question)

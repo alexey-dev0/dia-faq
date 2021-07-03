@@ -7,12 +7,16 @@ use App\Models\Tag;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class QuestionList extends Component
 {
-    public string $searchTerm = '';
+    use WithPagination;
+
+    public string $search = '';
     public Collection $tags;
     public array $selectedTags = [];
+    public string $sort = 'created_at.desc';
 
     public function mount(): void
     {
@@ -23,6 +27,8 @@ class QuestionList extends Component
 
     public function render(): View
     {
+        [ $sortColumn, $sortDirection ] = explode('.', $this->sort);
+
         $questions = Question::with('tags')
             ->withCount('comments')
             ->where(function($q) {
@@ -34,11 +40,11 @@ class QuestionList extends Component
                     }
                 });
             })
-            ->when(!empty($this->searchTerm), function($q) {
-                $q->search('title', $this->searchTerm);
+            ->when(!empty($this->search), function($q) {
+                $q->search('title', $this->search);
             })
-            ->orderByDesc('rating')
-            ->get();
+            ->orderBy($sortColumn, $sortDirection)
+            ->paginate(12);
 
         return view('livewire.user.question-list', [
             'questions' => $questions,
